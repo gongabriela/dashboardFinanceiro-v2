@@ -5,12 +5,12 @@ import { atualizarCartoes, renderizarListaTransacoes, atualizarDataCabecalho } f
 import { validarTransacao } from "./modules/utils/validations.js";
 
 const dadosIniciais = buscarDados();
-const inputDescricao = document.getElementById('descricao');
-const inputValor = document.getElementById('quantidade');
-const inputTipo = document.getElementById('tipo-transacao');
-const inputData = document.getElementById('data');
-const btnAdicionar = document.querySelector('.adiciona-historia');
-const listaTransacoes = document.querySelector('.lista-transacoes');
+const inputDescricao = document.getElementById('descricao') as HTMLInputElement;
+const inputValor = document.getElementById('quantidade') as HTMLInputElement;
+const inputTipo = document.getElementById('tipo-transacao') as HTMLSelectElement;
+const inputData = document.getElementById('data') as HTMLInputElement;
+const btnAdicionar = document.querySelector('.adiciona-historia') as HTMLButtonElement;
+const listaTransacoes = document.querySelector('.lista-transacoes') as HTMLUListElement;
 
 function criarDadoTransacao() {
 
