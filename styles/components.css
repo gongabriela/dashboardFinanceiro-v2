@@ -1,0 +1,240 @@
+.estilo-neon {
+    background-color: transparent;
+    color: var(--cor-azul-ceu);
+    border: 1px solid var(--cor-azul-ceu);
+    box-shadow: 0 0 8px var(--cor-azul-ceu);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none; 
+    display: inline-block;
+}
+
+.estilo-neon.ativo,
+.estilo-neon:active {
+    background-color: var(--cor-rosa);
+    color: var(--cor-fundo-card); 
+    border-color: var(--cor-rosa);
+    box-shadow: 0 0 15px var(--cor-rosa);
+}
+
+.estilo-neon i,
+.estilo-neon a {
+    color: inherit; 
+    text-decoration: none;
+    transition: inherit;
+}
+
+@media (hover: hover) {
+    .estilo-neon:hover {
+        background-color: var(--cor-rosa);
+        color: var(--cor-fundo-card); 
+        border-color: var(--cor-rosa);
+        box-shadow: 0 0 15px var(--cor-rosa);
+    }
+}
+
+.estilo-neon:active {
+    transition: 0.1s;
+}
+/* --- CLASSE UTILITÁRIA: CARD PADRÃO --- */
+.card-padrao {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* COMPONENTES ESPECÍFICOS */
+
+/* Menu Itens */
+.menu-itens {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+/* Calendário */
+.calendario { 
+    color: var(--cor-rosa);
+    font-size: 12px;
+    padding: 8px 16px;
+    border: 1px solid var(--cor-rosa);
+    border-radius: 5px;
+}
+
+/* Botões */
+.exportar, .adiciona-historia {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.adiciona-historia {
+    margin-top: 12px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.btn-lixeira {
+    padding: 4px;
+    border-radius: 10%;
+    display: inline-flex;
+}
+
+/* Tipografia de Cards */
+.titulo-card, .titulo-nova-transacao, .sub-titulo-historico {
+    color: var(--cor-banana);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sub-titulo-historico {
+    text-align: center;
+}
+
+.valor {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.expense-color {
+    color: var(--cor-vermelho);
+}
+
+/* Formulário */
+.form-container {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-container label {
+    color: var(--cor-roxo-claro);
+    font-size: 12px;
+}
+
+.form-container input, .form-container select {
+    padding: 8px;
+    border: 1px solid var(--cor-azul-ceu);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--cor-texto-principal);
+    width: 100%; /* Garante que ocupem o espaço */
+}
+
+.form-container input:focus, .form-container select:focus {
+    outline: none;
+    border-color: var(--cor-rosa);
+    box-shadow: 0 0 8px var(--cor-rosa);
+    transition: 0.3s;
+}
+
+/* Grupos do Form */
+.description-form, 
+.qtd-container, 
+.tipo-transacao-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.qtd-tipo-transacao-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.qtd-container, .tipo-transacao-container {
+    flex: 1;
+}
+
+#tipo-transacao option {
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-azul-ceu);
+}
+
+input[type="date"] {
+    color-scheme: dark;
+}
+/* Tabela de Transações */
+.cabecalho-tabela, .item-transacao {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; 
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+
+
+}
+
+.cabecalho-tabela {
+    color: var(--cor-roxo-claro);
+}
+
+.item-transacao {
+    background-color: var(--cor-fundo-pagina);
+    border: 1px solid var(--cor-borda);
+}
+
+.info-transacao {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+}
+
+.nome-transacao {
+    color: var(--cor-texto-principal);
+    word-break: break-all;
+}
+
+.categoria-transacao, .erro-descricao, .erro-quantidade, .erro-data {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.categoria-transacao.receita { color: var(--cor-verde); }
+.categoria-transacao.despesa { color: var(--cor-vermelho); }
+.erro-descricao, .erro-quantidade, .erro-data { color: var(--cor-vermelho); }
+
+.data-transacao {
+    color: var(--cor-roxo-claro);
+}
+
+.valor-transacao {
+    font-weight: bold;
+    text-align: right;
+    color: var(--cor-texto-principal);
+    white-space: normal; 
+    word-break: break-all;
+}
+
+.rodape-tabela {
+    text-align: center;
+}
+
+.link-extrato {
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: inline-block;
+}

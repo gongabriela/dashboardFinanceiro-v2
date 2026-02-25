@@ -1,0 +1,42 @@
+.btn-voltar {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+body.pagina-extrato {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-template-areas: none;
+}
+
+body.pagina-extrato .header {
+    width: 100%;
+    position: relative; 
+    display: flex;
+    justify-content: space-between;
+}
+
+body.pagina-extrato main {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.painel-extrato {
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-lista-completa {
+    width: 100%;
+    overflow-x: auto; 
+}

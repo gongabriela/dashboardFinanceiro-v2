@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Dashboard Financeiro Pessoal</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <p class="logo">Minhas <span class="financas">Finanças</span></p>
+        <menu class="menu">
+            <ul class="lista-de-servicos">
+                <li class="menu-itens estilo-neon ativo">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <a href="index.html" class="link-dashboard">Dashboard</a>
+                </li>
+                <li class="menu-itens estilo-neon">
+                    <i class="fa-solid fa-wallet"></i>
+                    <a href="./src/transacoes.html" class="link-transacoes">Transações</a>
+                </li>
+            </ul>
+        </menu>
+    </aside>
+
+    <header class="header">
+        <div class="titulo-container">
+            <h2 class="titulo">Overview</h2>
+            <p class="subtitle">Bem vindo de volta, aqui está o que acontece com o seu dinheiro</p>
+        </div>
+        <div class="header-actions">
+            <div class="calendario"></div>
+            <button class="exportar estilo-neon">Exportar</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="cards">
+            <div class="cards-container">
+                <div class="card card-padrao">
+                    <div class="titulo-card">Balanço Total</div>
+                    <div class="valor" id="valor-balanco">$ 0,00</div>
+                </div>
+                <div class="card card-padrao">
+                    <div class="titulo-card">Renda Total</div>
+                    <div class="valor" id="valor-renda">$ 0,00</div>
+                </div>
+                <div class="card card-padrao">
+                    <div class="titulo-card">Total de Despesas</div>
+                    <div class="valor expense-color" id="valor-despesa">$ 0,00</div>
+                </div>
+            </div>
+        </section>
+        <section class="historico-transacoes">
+            <div class="nova-transacao card-padrao">
+                <div class="titulo-nova-transacao-container">
+                    <p class="titulo-nova-transacao">Nova Transação</p>                 
+                </div>
+                <div class="form-container">
+                    <div class="description-form">
+                        <label for="data">Data</label>
+                        <input type="date" id="data">
+                        <span class="erro-data"></span>
+                        <label for="descricao">Descrição</label>
+                        <input type="text" id="descricao" placeholder="ex. Renda mensal">
+                        <span class="erro-descricao"></span>
+                    </div>
+                    <div class="qtd-tipo-transacao-container">
+                        <div class="qtd-container">
+                            <label for="quantidade">Valor</label>
+                            <input type="number" id="quantidade" placeholder="ex. 1000">
+                            <span class="erro-quantidade"></span>
+                        </div>
+                        <div class="tipo-transacao-container">
+                            <label for="tipo-transacao">Tipo</label>
+                            <select name="tipo-transacao" id="tipo-transacao">
+                                <option value="receita">Receita</option>
+                                <option value="despesa">Despesa</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <button class="adiciona-historia estilo-neon">
+                    <div class="btn-container">
+                        <div class="btn-icon">+</div>
+                        <p class="btn-text">Adicionar ao histórico</p>
+                    </div>
+                </button>
+            </div>
+            <article class="historico card-padrao">
+                <h3 class="sub-titulo-historico">Histórico recente (Últimos 7 dias)</h3>                    
+                <div class="table-container">
+                    <div class="cabecalho-tabela">
+                        <span>TRANSAÇÃO</span>
+                        <span>CATEGORIA</span>
+                        <span>DATA</span>
+                        <span>VALOR</span>
+                    </div>
+
+                    <ul class="lista-transacoes"></ul>
+
+                    <div class="rodape-tabela">
+                        <a href="./src/transacoes.html" class="link-extrato estilo-neon">VER EXTRATO COMPLETO &rarr;</a>
+                    </div>
+
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-mensagem">
+            Made with <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="footer-copyright">
+            © 2026 GABRIELA OLIVEIRA — BUILT WITH PASSION AND CODE.
+        </div>
+    </footer>
+</body>
+</html>

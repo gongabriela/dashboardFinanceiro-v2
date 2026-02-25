@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="../modules/transacoes/transacoes.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Transações</title>
+</head>
+
+<body class="pagina-extrato">
+    
+    <header class="header">
+        <div class="titulo-container">
+            <h2 class="titulo">Transações</h2> <p class="subtitle">Seu histórico financeiro completo</p>
+        </div>
+        <div class="header-actions">
+            <div class="calendario">13/02/2026</div> 
+            <button class="exportar estilo-neon">Exportar</button>
+            <a href="../index.html" class="btn-voltar estilo-neon">Voltar</a>
+        </div>
+    </header>
+
+    <main>
+        <article class="painel-extrato card-padrao">
+            <h3 class="sub-titulo-historico">Histórico Completo</h3>                    
+            
+            <div class="container-lista-completa">
+                
+                <div class="cabecalho-tabela">
+                    <span>TRANSAÇÃO</span>
+                    <span>CATEGORIA</span>
+                    <span>DATA</span>
+                    <span>VALOR</span>
+                </div>
+                
+                <ul class="lista-transacoes"></ul>
+                
+                </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-mensagem">
+            Made with <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="footer-copyright">
+            © 2026 GABRIELA OLIVEIRA — BUILT WITH PASSION AND CODE.
+        </div>
+    </footer>
+</body>
+</html>
