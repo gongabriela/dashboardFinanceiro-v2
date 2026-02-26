@@ -1,13 +1,12 @@
-//chave 
+import { type ITransacao } from "../models/Transacao.js";
+
 const CHAVE_STORAGE = "historicoTransacoes";
 
-//funcao para salvar os dados em json
-export function salvarDados(dados) {
+export function salvarDados(dados: ITransacao[]) {
     localStorage.setItem(CHAVE_STORAGE, JSON.stringify(dados));
 }
 
-//funcao para buscar os dados e retornar em objeto js
-export function buscarDados() {
+export function buscarDados(): ITransacao[] {
     const temp = localStorage.getItem(CHAVE_STORAGE);
     if (temp)
         return JSON.parse(temp);
