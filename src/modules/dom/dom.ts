@@ -1,30 +1,27 @@
 import { formatarValor } from "../utils/formatters.js";
+import { type ITransacao } from "../models/Transacao.js";
 
-export function atualizarCartoes(totalBalanco, totalRenda, totalDespesa) {
-    const elementoBalanco = document.getElementById('valor-balanco');
-    const elementoRenda = document.getElementById('valor-renda');
-    const elementoDespesa = document.getElementById('valor-despesa');
+export function atualizarCartoes(totalBalanco: string, totalRenda: string, totalDespesa: string) {
+    const elementoBalanco = document.getElementById('valor-balanco') as HTMLElement;
+    const elementoRenda = document.getElementById('valor-renda') as HTMLElement;
+    const elementoDespesa = document.getElementById('valor-despesa') as HTMLElement;
 
     elementoBalanco.textContent = totalBalanco;
     elementoRenda.textContent = totalRenda;
     elementoDespesa.textContent = totalDespesa;
 }
 
-const listaTransacoes = document.querySelector('.lista-transacoes');
+const listaTransacoes = document.querySelector('.lista-transacoes') as HTMLUListElement;
 
-export function renderizarListaTransacoes(dados) {
-    //limpar lista
+export function renderizarListaTransacoes(dados: ITransacao[]) {
     listaTransacoes.innerHTML = "";
-    //forEach elemento de dados
-    dados.forEach(transacao => {
-        //criar bloco html
+    dados.forEach((transacao: ITransacao) => {
         const blocoTransacao = criarBlocoTransacao(transacao);
-        //inserir li no ul (lista transacoes)
         listaTransacoes.appendChild(blocoTransacao);
     });
 }
 
-function criarBlocoTransacao(transacao) {
+function criarBlocoTransacao(transacao: ITransacao) {
     //criar li - item da lista transacoes
     const li = document.createElement('li');
     li.classList.add('item-transacao');
@@ -36,7 +33,7 @@ function criarBlocoTransacao(transacao) {
     //span do icone de lixeira
     const lixeira = document.createElement('button');
     lixeira.classList.add('btn-lixeira', 'estilo-neon');
-    lixeira.dataset.id = transacao.id;
+    lixeira.dataset.id = transacao.id.toString();
     const iconLixeira = document.createElement('i');
     iconLixeira.classList.add('fa-solid', 'fa-trash');
 
@@ -79,9 +76,9 @@ function criarBlocoTransacao(transacao) {
 }
 
 export function atualizarDataCabecalho() {
-    const elementoData = document.querySelector('.calendario');
+    const elementoData = document.querySelector('.calendario') as HTMLElement;
     const hoje = new Date();
-    const opcoes = { day: 'numeric', month: 'short', year: 'numeric' };
+    const opcoes : Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' };
     const dataFormatada = hoje.toLocaleDateString('pt-PT', opcoes);
     elementoData.textContent = dataFormatada; 
 }
