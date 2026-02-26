@@ -3,6 +3,8 @@ import { calcularRendaTotal, calcularDespesaTotal, calcularBalancoTotal } from "
 import { formatarValor } from "./modules/utils/formatters.js";
 import { atualizarCartoes, renderizarListaTransacoes, atualizarDataCabecalho } from "./modules/dom/dom.js";
 import { validarTransacao } from "./modules/utils/validations.js";
+import { Transacao, type ITransacao } from "./modules/models/Transacao.js";
+
 
 const dadosIniciais = buscarDados();
 const inputDescricao = document.getElementById('descricao') as HTMLInputElement;
@@ -32,7 +34,7 @@ function criarDadoTransacao() {
     return novaTransacao;
 }
 
-function atualizarDashboard(dados) {
+function atualizarDashboard(dados: ITransacao[]) {
     const rendaTotal = formatarValor(calcularRendaTotal(dados));
     const despesaTotal = formatarValor(calcularDespesaTotal(dados));
     const balancoTotal = formatarValor(calcularBalancoTotal(dados));
@@ -54,13 +56,14 @@ function processarNovaTransacao () {
     atualizarDashboard(dadosAtuais);
 }
 
-function removerTransacao(event) {
-    const transacaoClicada = event.target.closest('.btn-lixeira');
+function removerTransacao(event: Event) {
+const elementoAlvo = event.target as HTMLElement;
+const transacaoClicada = elementoAlvo.closest('.btn-lixeira');
     if (!transacaoClicada) return;
-    const idClicado = Number(transacaoClicada.dataset.id);
+    const idClicado = Number((transacaoClicada as HTMLElement).dataset.id);
     const dados = buscarDados();
 
-    const dadosAtualizados = dados.filter(transacao => {
+    const dadosAtualizados = dados.filter((transacao: ITransacao) => {
         return transacao.id !== idClicado;
     });
 
@@ -68,7 +71,7 @@ function removerTransacao(event) {
     atualizarDashboard(dadosAtualizados);
 }
 
-function filtrarUltimosSeteDias(dados) {
+function filtrarUltimosSeteDias(dados: ITransacao[]) {
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
@@ -76,8 +79,11 @@ function filtrarUltimosSeteDias(dados) {
     seteDiasAtras.setDate(hoje.getDate() - 7);
     seteDiasAtras.setHours(0, 0, 0, 0);
 
-    return dados.filter(transacao => {
-        const [dia, mes, ano] = transacao.data.split('/');
+    return dados.filter((transacao: ITransacao) => {
+        const [dia, mes, ano] = transacao.data.split('/').map(Number);
+        if (dia === undefined || mes === undefined || ano === undefined) {
+            return false;
+        }
         const dataTransacao = new Date(ano, mes - 1, dia);
         dataTransacao.setHours(0, 0, 0, 0);
         
