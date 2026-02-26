@@ -1,5 +1,7 @@
+import { Transacao, type ITransacao } from "../models/Transacao.js";
+
 // Calcular renda total (apenas receitas)
-export function calcularRendaTotal(dados) {
+export function calcularRendaTotal(dados: ITransacao[]) {
     return dados.reduce((total, transacao) => {
         if (transacao.tipo === "receita") {
             return total + transacao.valor;
@@ -9,7 +11,7 @@ export function calcularRendaTotal(dados) {
 }
 
 // Calcular total de despesas (apenas despesas)
-export function calcularDespesaTotal(dados) {
+export function calcularDespesaTotal(dados: ITransacao[]) {
     return dados.reduce((total, transacao) => {
         if (transacao.tipo === "despesa") {
             return total + transacao.valor;
@@ -19,7 +21,7 @@ export function calcularDespesaTotal(dados) {
 }
 
 // Calcular balanço total (renda - despesa)
-export function calcularBalancoTotal(dados) {
+export function calcularBalancoTotal(dados: ITransacao[]) {
     const rendaTotal = calcularRendaTotal(dados);
     const despesaTotal = calcularDespesaTotal(dados);
     

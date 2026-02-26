@@ -1,14 +1,14 @@
-const erroDescricao = document.querySelector('.erro-descricao');
-const erroQuantidade = document.querySelector('.erro-quantidade');
-const erroData = document.querySelector('.erro-data');
+const erroDescricao = document.querySelector('.erro-descricao') as HTMLElement;
+const erroQuantidade = document.querySelector('.erro-quantidade') as HTMLElement;
+const erroData = document.querySelector('.erro-data') as HTMLElement;
 
-export function validarTransacao(descricao, valor, data) {
+export function validarTransacao(descricao: string, valor: string, data: string) {
     if (validarDescricao(descricao) && validarValor(valor) && validarData(data))
         return true;
     return false;
 }
 
-function validarData(data) {
+function validarData(data: string) {
  if (data === '') {
         erroData.textContent = 'A data não pode estar vazia.';
         return false;
@@ -27,7 +27,7 @@ function validarData(data) {
     return true;
 }
 
-function validarDescricao(descricao) {
+function validarDescricao(descricao: string) {
     if (descricao.trim() === '') {
         erroDescricao.textContent = 'A descrição não pode estar vazia.';
         return false;
@@ -40,16 +40,16 @@ function validarDescricao(descricao) {
     return true;
 }
 
-function validarValor(valor) {
+function validarValor(valor: string) {
     if (valor === '') {
         erroQuantidade.textContent = 'O valor não pode estar vazio.';
         return false;
     }
-    else if (valor <= 0) {
+    else if (Number(valor) <= 0) {
         erroQuantidade.textContent = 'O valor deve ser maior que zero.';
         return false;
     }
-    else if (valor > 1000000000) {
+    else if (Number(valor) > 1000000000) {
         erroQuantidade.textContent = 'O valor deve ser menor que 1 bilhão.';
         return false;
     }
