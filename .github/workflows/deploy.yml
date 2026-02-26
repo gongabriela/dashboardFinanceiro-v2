@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # O robô acorda sempre que houver código novo na main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 1. Clonar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: 2. Preparar o computador (Node.js)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 3. Instalar ferramentas e compilar TypeScript
+        run: |
+          npm install
+          npx tsc
+
+      - name: 4. Configurar o GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: 5. Preparar os ficheiros (HTML, CSS e pasta dist)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Pega em tudo o que está na raiz do projeto
+
+      - name: 6. Publicar no ar! 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
