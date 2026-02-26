@@ -14,22 +14,21 @@ const inputData = document.getElementById('data') as HTMLInputElement;
 const btnAdicionar = document.querySelector('.adiciona-historia') as HTMLButtonElement;
 const listaTransacoes = document.querySelector('.lista-transacoes') as HTMLUListElement;
 
-function criarDadoTransacao() {
+function criarDadoTransacao() : ITransacao | null {
 
     const descricaoDigitada = inputDescricao.value;
     const valorDigitado = inputValor.value;
-    const tipoSelecionado = inputTipo.value;
+    const tipoSelecionado = inputTipo.value as "receita" | "despesa";
     const dataSelecionada = inputData.value;
     
     if (!validarTransacao(descricaoDigitada, valorDigitado, dataSelecionada)) {return null; }
 
-    const novaTransacao = {
-        id: Date.now(),
-        descricao: descricaoDigitada,
-        valor: parseFloat(valorDigitado),
-        tipo: tipoSelecionado,
-        data: new Date(dataSelecionada).toLocaleDateString()
-    };
+    const novaTransacao = new Transacao(
+        descricaoDigitada,
+        parseFloat(valorDigitado),
+        tipoSelecionado,
+        new Date(dataSelecionada).toLocaleDateString()
+    );
     
     return novaTransacao;
 }
